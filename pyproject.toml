@@ -32,7 +32,7 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/inferense/quickadd"
+Homepage = "https://github.com/AylaAI/quickadd"
 
 [project.optional-dependencies]
 test = ["pytest"]
