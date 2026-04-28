@@ -49,7 +49,7 @@ setup(
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/inferense/quickadd',
-    version='0.6.5',
+    url='https://github.com/AylaAI/quickadd',
+    version='0.6.6',
     zip_safe=False,
 )
