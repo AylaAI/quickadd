@@ -9,7 +9,6 @@ Installation
 
 With ``pip install -e git+https://github.com/Acreom/quickadd.git#egg=quickadd``
 
-
 or run ``python setup.py install`` in the root directory after forking.
 
 
@@ -17,7 +16,6 @@ Main upgrades include:
 ======================
 
 **Recurring events**
-
 
 .. code:: python
 
@@ -53,7 +51,6 @@ Main upgrades include:
     Recurring instance: weekly 1 2021-05-13 21:00 (X/X) 2021-05-13 21:00 (X/X)
     Recurring instance: weekly 1 2021-05-14 21:00 (X/X) 2021-05-14 21:00 (X/X)}
 
-
 **More rules**
 
 ruleNextFrequency
@@ -69,7 +66,6 @@ ruleNextFrequency
     r.resolution
     Time[5-15]{2023-01-13 X:X (X/X)}
 
-
 ruleLastDOM
 
 .. code:: python
@@ -79,7 +75,6 @@ ruleLastDOM
     r.resolution
     Time[5-17]{2022-12-26 X:X (X/X)}
 
-
 rrule_ **support**
 
 .. code:: python
@@ -87,9 +82,7 @@ rrule_ **support**
     r.resolution.to_rrule()
     Out[4]: 'RRULE:FREQ=DAILY;COUNT=1'
 
-
 **Subject extraction**
-
 
 .. code:: python
 
@@ -97,9 +90,7 @@ rrule_ **support**
     r.subject
     Out[2]: 'beers and burgers'
 
-
 **PM bias**
-
 
 .. code:: python
 
@@ -111,7 +102,6 @@ rrule_ **support**
     r.resolution
     Time[14-20]{2022-11-23 02:00 (X/X)}
 
-
 **Rules for ambigious natural language expressions**
 
 .. code:: python
@@ -120,9 +110,7 @@ rrule_ **support**
     r.resolution
     Interval[0-0]{2022-11-23 09:00 (X/X) - 2022-11-23 17:00 (X/X)}
 
-
 **US/EU date format**
-
 
 .. code:: python
 
@@ -134,7 +122,6 @@ rrule_ **support**
     r.resolution
     Time[14-17]{2023-05-03 X:X (X/X)}
 
-
 **Rule combinations**
 
 .. code:: python
@@ -143,16 +130,13 @@ rrule_ **support**
     r.resolution
     Time[5-18]{2021-05-12 16:00 (X/X)}
 
-
     r = ctparse("beer in 3 days 4pm every week")
     r.resolution
     Recurring[5-29]{weekly 1 2021-05-12 16:00 (X/X) 2021-05-12 16:00 (X/X)}
 
-
     r = ctparse("beer every friday 4-6:30pm")
     r.resolution
     Recurring[5-26]{WEEKLY 1 2022-11-25 16:00 (X/X) 2022-11-25 18:30 (X/X)}
-
 
 ``+`` **performance improvements**
 
@@ -167,14 +151,12 @@ Base Capabilities
     "beer thursday 4"
     Time[5-15]{2021-05-13 16:00 (X/X)}
 
-
 | **Interval**
 
 .. code:: python
 
     "beer 4-6"
     Interval[0-0]{2021-05-09 16:00 (X/X) - 2021-05-09 18:00 (X/X)}
-
 
 | **Duration**
 
@@ -186,7 +168,6 @@ Base Capabilities
 
 Ctparse
 =======
-
 
 The package ``ctparse`` is a pure python package to parse time
 expressions from natural language (i.e. strings). In many ways it builds
@@ -245,9 +226,8 @@ This should return a ``Time`` object represented as
 5th of May 2018 at 14:30 and that this resolution is neither based on a
 day of week (first ``X``) nor a part of day (second ``X``).
 
-
 Latent time
-~~~~~~~~~~~
+-----------
 
 Normally, ``ctparse`` will anchor time expressions to the reference time.
 For example, when parsing the time expression ``8:00 pm``, ctparse will
@@ -266,6 +246,7 @@ return a time resolution not anchored to a particular date
    parse = ctparse("8:00 pm", ts=datetime(2020, 1, 1, 7, 0), latent_time=False)
    # parse.resolution -> Time(None, None, None, 20, 00)
 
+
 Implementation
 ==============
 
@@ -274,7 +255,7 @@ expression based system + some probabilistic modeling. In this sense it
 resembles a PCFG.
 
 Rules
-~~~~~
+-----
 
 At the core ``ctparse`` is a collection of production rules over
 sequences of regular expressions and (intermediate) productions.
@@ -318,9 +299,8 @@ This production will return a new interval at the date of
 a time of day (TOD), no production is returned, e.g. the rule matched
 but failed.
 
-
 Technical Background
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 Some observations on the problem:
 
@@ -359,7 +339,7 @@ sequences of rules applied on top lead to meaningful results. Here the
 .. _rrule: https://dateutil.readthedocs.io/en/stable/rrule.html
 
 Credits
--------
+=======
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
