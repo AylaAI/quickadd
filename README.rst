@@ -2,7 +2,7 @@
 quickadd
 ===========================================================
 
-quickadd is a natural language date & time parser written in python. It builds on top of ctparse_ and is an actively maintained fork. 
+quickadd is a natural language date & time parser written in python. It builds on top of ctparse_ and is an actively maintained fork.
 
 Installation
 ============
@@ -24,15 +24,15 @@ Main upgrades include:
     r = ctparse("beer daily 4pm")
     r.resolution
     Recurring[5-14]{daily 1 2021-05-09 16:00 (X/X) 2021-05-09 16:00 (X/X)}
-    
+
     r = ctparse("beer every thursday 4")
     r.resolution
     Recurring[5-21]{weekly 1 2021-04-15 16:00 (X/X) 2021-04-15 16:00 (X/X)}
-    
+
     r = ctparse("beer every friday 9-5")
     r.resolution
     Recurring[5-21]{weekly 1 2021-05-14 09:00 (X/X) 2021-05-14 17:00 (X/X)}
-    
+
     r = ctparse("beer september 24 / beer every 24.9")
     r.resolution
     Recurring[5-21]{YEARLY 1 2021-09-24 (X/X) 2021-09-24 (X/X)}
@@ -40,18 +40,18 @@ Main upgrades include:
     r = ctparse("beer thursdays 3pm and wednesdays 4pm")
     r.resolution
     RecurringArray[5-37]{
-    Recurring instance: weekly 1 2021-05-13 15:00 (X/X) 2021-05-13 15:00 (X/X) 
+    Recurring instance: weekly 1 2021-05-13 15:00 (X/X) 2021-05-13 15:00 (X/X)
     Recurring instance: weekly 1 2021-05-12 16:00 (X/X) 2021-05-12 16:00 (X/X)
     }
-    
+
     r = ctparse("beer 9pm weekdays")
     r.resolution
     RecurringArray[5-17]{
-    Recurring instance: weekly 1 2021-05-10 21:00 (X/X) 2021-05-10 21:00 (X/X) 
-    Recurring instance: weekly 1 2021-05-11 21:00 (X/X) 2021-05-11 21:00 (X/X) 
-    Recurring instance: weekly 1 2021-05-12 21:00 (X/X) 2021-05-12 21:00 (X/X) 
-    Recurring instance: weekly 1 2021-05-13 21:00 (X/X) 2021-05-13 21:00 (X/X) 
-    Recurring instance: weekly 1 2021-05-14 21:00 (X/X) 2021-05-14 21:00 (X/X)}    
+    Recurring instance: weekly 1 2021-05-10 21:00 (X/X) 2021-05-10 21:00 (X/X)
+    Recurring instance: weekly 1 2021-05-11 21:00 (X/X) 2021-05-11 21:00 (X/X)
+    Recurring instance: weekly 1 2021-05-12 21:00 (X/X) 2021-05-12 21:00 (X/X)
+    Recurring instance: weekly 1 2021-05-13 21:00 (X/X) 2021-05-13 21:00 (X/X)
+    Recurring instance: weekly 1 2021-05-14 21:00 (X/X) 2021-05-14 21:00 (X/X)}
 
 
 **More rules**
@@ -59,12 +59,12 @@ Main upgrades include:
 ruleNextFrequency
 
 .. code:: python
-    
+
     #reference date = Dec 13th 2022
     r = ctparse("code next week 4pm")
     r.resolution
     Time[5-18]{2022-12-20 16:00
-    
+
     r = ctparse("code next month")
     r.resolution
     Time[5-15]{2023-01-13 X:X (X/X)}
@@ -73,7 +73,7 @@ ruleNextFrequency
 ruleLastDOM
 
 .. code:: python
-    
+
     #reference date = Dec 13th 2022
     r = ctparse("code last monday of the month")
     r.resolution
@@ -86,7 +86,7 @@ rrule_ **support**
 
     r.resolution.to_rrule()
     Out[4]: 'RRULE:FREQ=DAILY;COUNT=1'
-    
+
 
 **Subject extraction**
 
@@ -96,8 +96,8 @@ rrule_ **support**
     r = ctparse("beers and burgers friday 8pm-9pm")
     r.subject
     Out[2]: 'beers and burgers'
-    
-    
+
+
 **PM bias**
 
 
@@ -106,13 +106,13 @@ rrule_ **support**
     r = ctparse("fix the issue tmrw 2")
     r.resolution
     Time[14-20]{2022-11-23 14:00 (X/X)}
-    
+
     r = ctparse("fix the issue tmrw 2", pm_bias=False)
     r.resolution
     Time[14-20]{2022-11-23 02:00 (X/X)}
 
 
-**Rules for ambigious natural language expressions** 
+**Rules for ambigious natural language expressions**
 
 .. code:: python
 
@@ -129,21 +129,21 @@ rrule_ **support**
     r = ctparse("fix the issue 5.3")
     r.resolution
     Time[14-17]{2023-03-05 X:X (X/X)}
-    
+
     r = ctparse("fix the issue 5.3", date_format="US")
     r.resolution
     Time[14-17]{2023-05-03 X:X (X/X)}
 
 
-**Rule combinations** 
+**Rule combinations**
 
 .. code:: python
 
     r = ctparse("beer in 3 days 4pm")
     r.resolution
     Time[5-18]{2021-05-12 16:00 (X/X)}
-    
-    
+
+
     r = ctparse("beer in 3 days 4pm every week")
     r.resolution
     Recurring[5-29]{weekly 1 2021-05-12 16:00 (X/X) 2021-05-12 16:00 (X/X)}
@@ -158,8 +158,9 @@ rrule_ **support**
 
 
 Base Capabilities
-----------
-| **Time** 
+=================
+
+| **Time**
 
 .. code:: python
 
@@ -167,7 +168,7 @@ Base Capabilities
     Time[5-15]{2021-05-13 16:00 (X/X)}
 
 
-| **Interval** 
+| **Interval**
 
 .. code:: python
 
@@ -175,7 +176,7 @@ Base Capabilities
     Interval[0-0]{2021-05-09 16:00 (X/X) - 2021-05-09 18:00 (X/X)}
 
 
-| **Duration** 
+| **Duration**
 
 .. code:: python
 
@@ -184,11 +185,12 @@ Base Capabilities
 
 
 Ctparse
-----------
+=======
+
 
 The package ``ctparse`` is a pure python package to parse time
 expressions from natural language (i.e. strings). In many ways it builds
-on similar concepts as Facebook’s ``duckling`` package
+on similar concepts as Facebook's ``duckling`` package
 (https://github.com/facebook/duckling). However, for the time being it
 only targets times and only German and English text.
 
@@ -247,7 +249,7 @@ day of week (first ``X``) nor a part of day (second ``X``).
 Latent time
 ~~~~~~~~~~~
 
-Normally, ``ctparse`` will anchor time expressions to the reference time. 
+Normally, ``ctparse`` will anchor time expressions to the reference time.
 For example, when parsing the time expression ``8:00 pm``, ctparse will
 resolve the expression to 8 pm after the reference time as follows
 
@@ -265,7 +267,7 @@ return a time resolution not anchored to a particular date
    # parse.resolution -> Time(None, None, None, 20, 00)
 
 Implementation
---------------
+==============
 
 ``ctparse`` - as ``duckling`` - is a mixture of a rule and regular
 expression based system + some probabilistic modeling. In this sense it
