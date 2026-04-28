@@ -5,7 +5,6 @@ quickadd
 quickadd is a natural language date & time parser written in python. It builds on top of ctparse_ and is an actively maintained fork. 
 
 Installation
-----------
 
 With ``pip install -e git+https://github.com/Acreom/quickadd.git#egg=quickadd``
 
@@ -14,7 +13,6 @@ or run ``python setup.py install`` in the root directory after forking.
 
 
 Main upgrades include:
-----------
 
 **Recurring events**
 
@@ -158,7 +156,7 @@ rrule_ **support**
 
 
 Base Capabilities
-----------
+
 | **Time** 
 
 .. code:: python
@@ -184,7 +182,7 @@ Base Capabilities
 
 
 Ctparse
-----------
+
 
 The package ``ctparse`` is a pure python package to parse time
 expressions from natural language (i.e. strings). In many ways it builds
@@ -265,7 +263,7 @@ return a time resolution not anchored to a particular date
    # parse.resolution -> Time(None, None, None, 20, 00)
 
 Implementation
---------------
+----
 
 ``ctparse`` - as ``duckling`` - is a mixture of a rule and regular
 expression based system + some probabilistic modeling. In this sense it
