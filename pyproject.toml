@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "quickadd"
-version = "0.6.5"
+version = "0.6.6"
 description = "Parse natural language time expressions in python"
 readme = {file = "README.rst", content-type = "text/x-rst"}
 license = {text = "MIT"}
@@ -52,7 +52,7 @@ ctparse = "ctparse"
 ctparse = ["models/model.pbz", "py.typed"]
 
 [tool.bumpversion]
-current_version = "0.6.5"
+current_version = "0.6.6"
 commit = true
 tag = true
 
